@@ -134,7 +134,7 @@
         <h2>🚀 昂昂直覺模擬器</h2>
         <p>輸入一個數字，用昂昂的「3×偶數 + 偏移」法來拆解它吧：</p>
         <div class="input-group">
-            <input type="number" id="numInput" placeholder="請輸入大於 3 的奇數 (例如 217)">
+            <input type="number" id="numInput" placeholder="請輸入大於 3 的奇數 (例如 1003)">
             <button onclick="analyzeNumber()">用昂昂演算法分析！</button>
         </div>
         <div id="result" class="result-box"></div>
@@ -206,8 +206,10 @@ function analyzeNumber() {
             explanation += "因為偶數部分 " + even + " 和偏移量 " + shift + " 都可以被 <span class=\"highlight\">" + factorFound + "</span> 整除，<strong>3 直接被抵消了</strong>！<br>";
             explanation += "這代表 " + val + " 是 " + factorFound + " 的倍數 (" + factorFound + " × " + (val/factorFound) + ")，它<strong>不是質數</strong>！";
         } else {
-            explanation += "⚠️ <strong>因數檢查：</strong><br>";
-            explanation += "雖然它在軌道上，但我們發現它可以被 " + factorFound + " 整除 (" + factorFound + " × " + (val/factorFound) + ")，所以它<strong>不是質數</strong>喔！";
+            explanation += "⚠️  <strong>直觀軌道失效分析：</strong><br>";
+            explanation += "雖然它成功落在昂昂的星空軌道上，但因為它<strong>本質上是其他質數的倍數</strong>！<br>";
+            explanation += "具體來說，它是軌道上的質數 <span class=\"highlight\">" + factorFound + "</span> 的倍數：也就是 <span class=\"highlight\">" + factorFound + " × " + (val/factorFound) + "</span>。<br>";
+            explanation += "所以它只是其他星體（質數）產生的重疊投影，<strong>不是真正的獨立質數</strong>喔！";
         }
     } else {
         explanation += "👑 <strong>恭喜！這是一個真正的質數！</strong><br>";
